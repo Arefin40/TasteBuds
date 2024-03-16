@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 import Header from "@components/Header";
 import HeroSection from "@components/HeroSection";
@@ -22,11 +23,17 @@ export default () => {
    /** Adds a recipe to the preparing table. */
    const addToPreparing = (recipe) => {
       if (preparing.includes(recipe)) {
-         console.log("Already preparing");
+         toast.error("Already preparing", {
+            style: {
+               borderRadius: "10px",
+               background: "#333",
+               color: "#fff",
+            },
+         });
          return;
       }
       if (cooking.includes(recipe)) {
-         console.log("Already cooking");
+         toast.error("Already cooking");
          return;
       }
       setPreparing([...preparing, recipe]);
@@ -42,6 +49,7 @@ export default () => {
    // Components
    return (
       <>
+         <Toaster />
          <Header />
 
          <main className="px-5 mt-5 mb-16 lg:mt-0 lg:px-0 mx-auto container grid gap-y-16 lg:gap-y-24">
