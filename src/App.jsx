@@ -10,6 +10,7 @@ export default () => {
    // States
    const [data, setData] = useState([]);
    const [preparing, setPreparing] = useState([]);
+   const [cooking, setCooking] = useState([]);
 
    // Fetching recipe data
    useEffect(() => {
@@ -24,7 +25,18 @@ export default () => {
          console.log("Already preparing");
          return;
       }
+      if (cooking.includes(recipe)) {
+         console.log("Already cooking");
+         return;
+      }
       setPreparing([...preparing, recipe]);
+   };
+
+   /** Sends the recipe for cooking. */
+   const sendForCooking = (recipe) => {
+      const filteredRecipes = preparing.filter(({ id }) => id !== recipe.id);
+      setPreparing(filteredRecipes);
+      setCooking([...cooking, recipe]);
    };
 
    // Components
@@ -37,7 +49,9 @@ export default () => {
             <RecipeSection
                recipes={data}
                preparing={preparing}
+               cooking={cooking}
                addToPreparing={addToPreparing}
+               sendForCooking={sendForCooking}
             />
             <Newletter />
          </main>

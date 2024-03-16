@@ -2,10 +2,17 @@ import prettifyTime from "@utils/prettifyTime";
 import TableRow from "@components/TableRow";
 import { Calory, Time } from "@icons";
 
-export default ({ name, readOnly, recipes = [] }) => {
+export default ({ name, readOnly, recipes = [], sendForCooking }) => {
    const columns = readOnly ? "grid-cols-cooking" : "grid-cols-preparing";
+
    let totalTime = 0;
    let totalCalories = 0;
+   if (readOnly) {
+      recipes.forEach(({ preparing_time, calories }) => {
+         totalTime += preparing_time;
+         totalCalories += calories;
+      });
+   }
 
    return (
       <div>
@@ -28,6 +35,7 @@ export default ({ name, readOnly, recipes = [] }) => {
                   serial={index + 1}
                   readOnly={readOnly}
                   recipe={recipe}
+                  onAction={() => sendForCooking(recipe)}
                />
             ))}
 

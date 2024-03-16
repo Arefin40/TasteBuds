@@ -1,7 +1,13 @@
 import RecipeCard from "@components/RecipeCard";
 import Table from "@components/Table";
 
-export default ({ recipes, preparing, addToPreparing }) => {
+export default ({
+   recipes,
+   preparing,
+   cooking,
+   addToPreparing,
+   sendForCooking,
+}) => {
    return (
       <section>
          <header className="mb-6 lg:mb-12 text-center grid gap-y-4 lg:gap-y-6 justify-items-center">
@@ -27,8 +33,12 @@ export default ({ recipes, preparing, addToPreparing }) => {
             </div>
 
             <div className="py-6 grid gap-y-8 rounded-2xl border content-start sticky top-0">
-               <Table name="Want to cook" recipes={preparing} />
-               <Table readOnly name="Currently cooking" />
+               <Table
+                  name="Want to cook"
+                  recipes={preparing}
+                  sendForCooking={sendForCooking}
+               />
+               <Table readOnly name="Currently cooking" recipes={cooking} />
             </div>
          </main>
       </section>
