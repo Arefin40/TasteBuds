@@ -9,6 +9,7 @@ import RecipeSection from "@components/RecipeSection";
 export default () => {
    // States
    const [data, setData] = useState([]);
+   const [preparing, setPreparing] = useState([]);
 
    // Fetching recipe data
    useEffect(() => {
@@ -17,6 +18,15 @@ export default () => {
          .then((data) => setData(data.recipes));
    }, []);
 
+   /** Adds a recipe to the preparing table. */
+   const addToPreparing = (recipe) => {
+      if (preparing.includes(recipe)) {
+         console.log("Already preparing");
+         return;
+      }
+      setPreparing([...preparing, recipe]);
+   };
+
    // Components
    return (
       <>
@@ -24,7 +34,11 @@ export default () => {
 
          <main className="px-5 mt-5 mb-16 lg:mt-0 lg:px-0 mx-auto container grid gap-y-16 lg:gap-y-24">
             <HeroSection />
-            <RecipeSection recipes={data} />
+            <RecipeSection
+               recipes={data}
+               preparing={preparing}
+               addToPreparing={addToPreparing}
+            />
             <Newletter />
          </main>
 

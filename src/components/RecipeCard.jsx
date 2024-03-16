@@ -2,7 +2,7 @@ import Button from "@components/Button";
 import prettifyTime from "@utils/prettifyTime";
 import { Calory, Time } from "@icons";
 
-export default ({ recipe }) => {
+export default ({ recipe, addToPreparing }) => {
    let { name, image, description, ingredients, preparing_time, calories } =
       recipe;
 
@@ -42,7 +42,12 @@ export default ({ recipe }) => {
             </div>
          </div>
 
-         <Button className="mt-2 justify-self-start">Want to Cook</Button>
+         <Button
+            onClick={() => addToPreparing(recipe)}
+            className="mt-2 justify-self-start"
+         >
+            Want to Cook
+         </Button>
       </div>
    );
 };

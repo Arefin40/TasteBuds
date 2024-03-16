@@ -1,7 +1,8 @@
 import prettifyTime from "@utils/prettifyTime";
+import TableRow from "@components/TableRow";
 import { Calory, Time } from "@icons";
 
-export default ({ name, readOnly }) => {
+export default ({ name, readOnly, recipes = [] }) => {
    const columns = readOnly ? "grid-cols-cooking" : "grid-cols-preparing";
    let totalTime = 0;
    let totalCalories = 0;
@@ -9,7 +10,7 @@ export default ({ name, readOnly }) => {
    return (
       <div>
          <h1 className="pb-4 mx-16 mb-6 font-bold text-2xl text-center text-black border-b">
-            {name}: 0
+            {name}: {recipes.length || 0}
          </h1>
 
          <div
@@ -21,6 +22,15 @@ export default ({ name, readOnly }) => {
          </div>
 
          <div className="grid">
+            {recipes.map((recipe, index) => (
+               <TableRow
+                  key={recipe.id}
+                  serial={index + 1}
+                  readOnly={readOnly}
+                  recipe={recipe}
+               />
+            ))}
+
             {readOnly && (
                <div className="px-6 mt-2 flex gap-x-5 gap-y-1 items-center justify-center flex-wrap">
                   <div className="flex items-center gap-x-2 flex-shrink-0">
