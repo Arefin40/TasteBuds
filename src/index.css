@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-banner {
+   background-image: linear-gradient(to bottom, #150b2bbf, #150b2b33),
+      url("../src/assets/Banner.jpg");
+}
+
+.list-image-recipe {
+   list-style-image: url("../src/assets/Bullet.png");
+}
