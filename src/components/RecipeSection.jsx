@@ -1,4 +1,5 @@
 import RecipeCard from "@components/RecipeCard";
+import Table from "@components/Table";
 
 export default ({ recipes }) => {
    return (
@@ -19,6 +20,11 @@ export default ({ recipes }) => {
                {recipes.map((recipe) => (
                   <RecipeCard key={recipe.id} recipe={recipe} />
                ))}
+            </div>
+
+            <div className="py-6 grid gap-y-8 rounded-2xl border content-start sticky top-0">
+               <Table name="Want to cook" />
+               <Table readOnly name="Currently cooking" />
             </div>
          </main>
       </section>
