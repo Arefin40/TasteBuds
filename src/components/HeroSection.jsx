@@ -1,4 +1,3 @@
-import Banner from "@assets/Banner.jpg";
 import Button from "@components/Button";
 
 export default () => {

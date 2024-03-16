@@ -15,9 +15,9 @@ export default () => {
 
    // Fetching recipe data
    useEffect(() => {
-      fetch("/src/utils/data.json")
+      fetch("recipes.json")
          .then((response) => response.json())
-         .then((data) => setData(data.recipes));
+         .then((data) => setData(data));
    }, []);
 
    /** Adds a recipe to the preparing table. */
