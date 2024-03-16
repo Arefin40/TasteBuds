@@ -8,7 +8,7 @@ export default {
          },
          backgroundImage: (theme) => ({
             banner:
-               "linear-gradient(to bottom, #150B2BBF, #150B2B33), url('/src/assets/Banner.jpg')",
+               "linear-gradient(to bottom, #150B2BBF, #150B2B33), url('~src/assets/Banner.jpg')",
          }),
          gridTemplateColumns: {
             recipe: "48rem 1fr",
@@ -17,7 +17,7 @@ export default {
             "hero-buttons": "repeat(auto-fit, minmax(12.125rem,1fr))",
          },
          listStyleImage: {
-            recipe: 'url("/src/assets/Bullet.png")',
+            recipe: 'url("~src/assets/Bullet.png")',
          },
       },
    },
