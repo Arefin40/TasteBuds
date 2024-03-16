@@ -1,6 +1,7 @@
 import Header from "@components/Header";
 import HeroSection from "@components/HeroSection";
 import Newletter from "@components/Newletter";
+import Footer from "@components/Footer";
 
 export default () => {
    return (
@@ -11,6 +12,8 @@ export default () => {
             <HeroSection />
             <Newletter />
          </main>
+
+         <Footer />
       </>
    );
 };
